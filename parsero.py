@@ -134,7 +134,7 @@ def conn_check(url):
 	os.remove("robots.txt")
 
 def date(url):
-	print("Starting Parsero v0.4 (https://github.com/behindthefirewalls/Parsero) at " + time.strftime("%x") + " " + time.strftime("%X"))
+	print("Starting Parsero v0.5 (https://github.com/behindthefirewalls/Parsero) at " + time.strftime("%x") + " " + time.strftime("%X"))
 	print("Parsero scan report for " + url)
 
 
