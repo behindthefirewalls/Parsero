@@ -3,8 +3,8 @@
 
 __license__="""
 
-Parsero is a free script which read the robots.txt and read the Disallow entries. Then it visits these 
-entries and print the status code in order to show you which are available and which not
+Parsero is a free script which read the Robots.txt file of a web server and look at the Disallow entries. Then it 
+visits these entries and prints the status code in order to show you which of them are available and which not.
 
 Author:
 	Javier Nieto | javier.nieto@behindthefirewalls.com
@@ -100,8 +100,6 @@ def logo():
 
 	now = time.strftime("%c")
 
-#	print("Starting Parsero v1 (https://github.com/behindthefirewalls/Parsero) at " + time.strftime("%x") + " " + time.strftime("%X"))
-#	print("Parsero scan report for " + url)
 
 
 def parseo(url):
@@ -136,7 +134,7 @@ def conn_check(url):
 	os.remove("robots.txt")
 
 def date(url):
-	print("Starting Parsero v1 (https://github.com/behindthefirewalls/Parsero) at " + time.strftime("%x") + " " + time.strftime("%X"))
+	print("Starting Parsero v0.4 (https://github.com/behindthefirewalls/Parsero) at " + time.strftime("%x") + " " + time.strftime("%X"))
 	print("Parsero scan report for " + url)
 
 
