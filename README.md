@@ -80,6 +80,12 @@ The use of this tools is your responsability. Use parsero to audit your own serv
 Author:
 =======
 
-    Javier Nieto | javier.nieto<@>behindthefirewalls.com
-    Twitter: @behindfirewalls
+  Javier Nieto
+  
+  eMail: javier.nieto<@>behindthefirewalls.com
+  
+  Twitter: @behindfirewalls
+  
   Web: http://www.behindthefirewalls.com
+  
+
