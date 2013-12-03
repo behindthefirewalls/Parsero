@@ -1,4 +1,4 @@
-What's Parsero:
+What's Parsero?
 ===============
 Parsero is a free script which read the Robots.txt file of a web server and look at the Disallow entries. Then it 
 visits these entries and prints the status code in order to show you which of them are available and which not.
