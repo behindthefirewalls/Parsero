@@ -114,6 +114,10 @@ def parseo(url):
 			links = open("path.txt",'a')
 			links.write(path[1])
 	robots.close()
+	if os.path.isfile("./path.txt") == False:
+		print("\n" + bcolors.FAIL + "Parsero doesn't find any Disallow, Robots.txt is not valid or is empty." + bcolors.ENDC + "\n")
+		exit(1)
+
 	links.close()
 
 def conn_check(url):
