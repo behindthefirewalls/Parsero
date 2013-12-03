@@ -3,9 +3,8 @@
 
 __license__="""
 
-Parsero is a free script which check the robots.txt file of a web server in order to
-check if the Disallow entries are available connecting with the server and getting 
-the status code.
+Parsero is a free script which read the robots.txt and read the Disallow entries. Then it visits these 
+entries and print the status code in order to show you which are available and which not
 
 Author:
 	Javier Nieto | javier.nieto@behindthefirewalls.com
