@@ -1,8 +1,8 @@
 What's Parsero?
 ===============
-Parsero is a free script written in Python which read the Robots.txt file of a web server and look at the Disallow entries. The Disallow entries are the URL path of directories or files hosted on the web server which the administrators don't want they be indexed by the crawlers. For example, "Disallow: /portal/login" don't allow to "www.example.com/portal/login" be indexed by the search engines like Google, Bing, Yahoo... in order nobody locate it seeking on them.
+Parsero is a free script written in Python which read the Robots.txt file of a web server and look at the Disallow entries. The Disallow entries are the URL path of directories or files hosted on the web server which the administrators don't want they be indexed by the crawlers. For example, "Disallow: /portal/login" don't allow to www.example.com/portal/login be indexed by the search engines like Google, Bing, Yahoo... in order nobody locate it seeking on them.
 
-Sometimes these paths typed in the Disallows entries  are directly accessible by the users (without using a search engine) just visiting the URL and the path, even sometimes they are not available to be visited by anybody... Because it is really common that the administrators write a lot of Disallows in the Robots.txt and some of them are available and some of them are not, you can use Parsero in order to check the HTTP status code of each Disallow entry in order to check automatically if these directories are available or not. 
+Sometimes these paths typed in the Disallows entries  are directly accessible by the users (without using a search engine) just visiting the URL and the Path even sometimes they are not available to be visited by anybody... Because it is really common that the administrators write a lot of Disallows and some of them are available and some of them are not, you can use Parsero in order to check the HTTP status code of each Disallow entry in order to check automatically if these directories are available or not.
 
 When you execute Parsero, you can see the HTTP status codes. For example, the codes bellow:
 
