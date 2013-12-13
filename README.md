@@ -20,7 +20,7 @@ Installing:
 This tool needs at least Python3 and urllib3.
         
         sudo apt-get install python3
-        sudo apt-get install python-pip
+        sudo apt-get install python3-pip
         sudo pip install urllib3
         
 Make sure that your default version of Python is 3 or later. If you don't want to change your default version, you can execute typing $ python3.3 parsero (if this version has been installed) instead of $ python parsero.
