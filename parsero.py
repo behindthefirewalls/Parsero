@@ -54,6 +54,7 @@ import urllib.request
 import argparse
 import os
 import time
+import timeit
 
 try:
 	import urllib3
@@ -116,6 +117,7 @@ def parseo(url):
 	robots.close()
 	if os.path.isfile("./path.txt") == False:
 		print("\n" + bcolors.FAIL + "Parsero doesn't find any Disallow, Robots.txt is not valid or is empty." + bcolors.ENDC + "\n")
+		os.remove("robots.txt")
 		exit(1)
 
 	links.close()
@@ -123,6 +125,8 @@ def parseo(url):
 def conn_check(url):
 	links = open("path.txt")
 	http = urllib3.PoolManager()
+	count = 0
+	count_ok = 0
 	for line in links.readlines():
 		read = line.split("\n")
 		path = read[0].lstrip()
@@ -130,9 +134,18 @@ def conn_check(url):
 		r1 = http.request('GET', disurl, redirect = False, retries = 5)
 		if r1.status == 200:
 			print (bcolors.OKGREEN + url+path + ' ' + str(r1.status) + ' ' + str(r1.reason) + bcolors.ENDC)
+			count_ok = count_ok+1
 		else:
 			print (bcolors.FAIL + url+path + ' ' + str(r1.status) + ' ' + str(r1.reason) + bcolors.ENDC)
-	print('\nFinished!!!\n')
+		count = count+1
+
+	count_int = int(count)
+	count_ok_int = int(count_ok)
+	if count_ok_int != 0:
+		print('\n%i links have been analyzed and %i of them are available!!!\n'%(count_int,count_ok_int))
+	else:
+		print('\n%i links have been analyzed but any them are available... :(\n'%count_int)
+
 	links.close()
 	os.remove("path.txt")
 	os.remove("robots.txt")
@@ -164,4 +177,6 @@ def main():
 	conn_check(url)
 
 if __name__=="__main__":
+	start_time = time.time()
 	main()
+	print("Finished in", time.time() - start_time, "seconds\n")
