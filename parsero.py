@@ -122,7 +122,7 @@ def parseo(url):
 
 	links.close()
 
-def conn_check(url):
+def conn_check(url, only200):
 	links = open("path.txt")
 	http = urllib3.PoolManager()
 	count = 0
@@ -135,13 +135,16 @@ def conn_check(url):
 		if r1.status == 200:
 			print (bcolors.OKGREEN + url+path + ' ' + str(r1.status) + ' ' + str(r1.reason) + bcolors.ENDC)
 			count_ok = count_ok+1
-		else:
+		elif only200 == False:
 			print (bcolors.FAIL + url+path + ' ' + str(r1.status) + ' ' + str(r1.reason) + bcolors.ENDC)
 		count = count+1
 
 	count_int = int(count)
 	count_ok_int = int(count_ok)
-	if count_ok_int != 0:
+	if count_ok_int != 0 and only200 == True :
+		print('\n%i links have been analyzed and %i of them are available!!!'%(count_int,count_ok_int))
+		print('Showing only available links\n');
+	elif count_ok_int != 0 :
 		print('\n%i links have been analyzed and %i of them are available!!!\n'%(count_int,count_ok_int))
 	else:
 		print('\n%i links have been analyzed but any them are available... :(\n'%count_int)
@@ -159,6 +162,7 @@ def date(url):
 def main():
 	parse = argparse.ArgumentParser()
 	parse.add_argument('-u', action='store', dest='url', help='Type the URL which will be analyzed')
+	parse.add_argument('-o', action='store_true', dest='only200', help='Show only HTTP 200 status code')
 	
 	logo()
 
@@ -169,12 +173,13 @@ def main():
 		exit(1)
 
 	url = str(args.url)
+	only200 = args.only200
 
 	check_file()
 	download(url)
 	parseo(url)
 	date(url)
-	conn_check(url)
+	conn_check(url, only200)
 
 if __name__=="__main__":
 	start_time = time.time()
