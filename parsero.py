@@ -42,20 +42,12 @@ class bcolors:
             self.FAIL = ''
             self.ENDC = ''
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 0ad335f2139e316c3ebec781a98a6468e62b62c9
 import sys
 
 if sys.version_info<(3,0,0):
 	print("\n" + bcolors.FAIL + "You need Python3 or later to run this script." + bcolors.ENDC + "\n")
 	exit(1)
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 0ad335f2139e316c3ebec781a98a6468e62b62c9
 import urllib.request
 import argparse
 import os
@@ -64,7 +56,6 @@ import timeit
 
 try:
 	import urllib3
-<<<<<<< HEAD
 
 except ImportError:
 
@@ -73,14 +64,6 @@ except ImportError:
 
 def check_file():
 
-=======
-except ImportError:
-	print("\n" + bcolors.FAIL + 'You need install urllib3. "sudo pip install urllib3"' + bcolors.ENDC + "\n")
-	exit(1)
-
-
-def check_file():
->>>>>>> 0ad335f2139e316c3ebec781a98a6468e62b62c9
 	from os import path
 	PATH = "./robots.txt"
 	PATH2 = "./path.txt"
@@ -103,10 +86,6 @@ def download(url):
 	with open('robots.txt', 'b+w') as f:
         	            f.write(g.read())
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 0ad335f2139e316c3ebec781a98a6468e62b62c9
 def logo():
 
 	hello="""
@@ -121,11 +100,6 @@ def logo():
 
 	now = time.strftime("%c")
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 0ad335f2139e316c3ebec781a98a6468e62b62c9
 def parseo(url):
 	
 	robots = open("robots.txt")
@@ -165,7 +139,6 @@ def conn_check(url, only200):
 	count_int = int(count)
 	count_ok_int = int(count_ok)
 	if count_ok_int != 0 and only200 == True :
-<<<<<<< HEAD
 		print('\n[+] %i links have been analyzed and %i of them are available!!!'%(count_int,count_ok_int))
 	elif count_ok_int != 0 :
 		print('\n[+] %i links have been analyzed and %i of them are available!!!'%(count_int,count_ok_int))
@@ -220,36 +193,13 @@ def date(url):
 def remove_files():
 	os.remove("path.txt")
 	os.remove("robots.txt")
-=======
-		print('\n%i links have been analyzed and %i of them are available!!!'%(count_int,count_ok_int))
-		print('Showing only available links\n');
-	elif count_ok_int != 0 :
-		print('\n%i links have been analyzed and %i of them are available!!!\n'%(count_int,count_ok_int))
-	else:
-		print('\n%i links have been analyzed but any them are available... :(\n'%count_int)
-
-	links.close()
-	os.remove("path.txt")
-	os.remove("robots.txt")
-
-def date(url):
-	print("Starting Parsero v0.45 (https://github.com/behindthefirewalls/Parsero) at " + time.strftime("%x") + " " + time.strftime("%X"))
-	print("Parsero scan report for " + url)
-
-
->>>>>>> 0ad335f2139e316c3ebec781a98a6468e62b62c9
 
 def main():
 	parse = argparse.ArgumentParser()
 	parse.add_argument('-u', action='store', dest='url', help='Type the URL which will be analyzed')
-<<<<<<< HEAD
 	parse.add_argument('-o', action='store_true', dest='only200', help='Show only the "HTTP 200" status code')
 	parse.add_argument('-sb', action='store_true', dest='searchbing', help='Search in Bing indexed Disallows')
 
-=======
-	parse.add_argument('-o', action='store_true', dest='only200', help='Show only HTTP 200 status code')
-	
->>>>>>> 0ad335f2139e316c3ebec781a98a6468e62b62c9
 	logo()
 
 	args = parse.parse_args()
@@ -260,28 +210,18 @@ def main():
 
 	url = str(args.url)
 	only200 = args.only200
-<<<<<<< HEAD
 	searchbing = args.searchbing
-=======
->>>>>>> 0ad335f2139e316c3ebec781a98a6468e62b62c9
 
 	check_file()
 	download(url)
 	parseo(url)
 	date(url)
 	conn_check(url, only200)
-<<<<<<< HEAD
 	if searchbing == True:
 		search_bing(url, searchbing)
 	remove_files()
-=======
->>>>>>> 0ad335f2139e316c3ebec781a98a6468e62b62c9
 
 if __name__=="__main__":
 	start_time = time.time()
 	main()
-<<<<<<< HEAD
 	print("\nFinished in", time.time() - start_time, "seconds\n")
-=======
-	print("Finished in", time.time() - start_time, "seconds\n")
->>>>>>> 0ad335f2139e316c3ebec781a98a6468e62b62c9
