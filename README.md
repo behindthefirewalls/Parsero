@@ -1,4 +1,4 @@
-Here, you can get all the info about Parsero updated here:
+Here, you can get all the info about Parsero updated:
 
 http://www.behindthefirewalls.com/search/?q=parsero
 What's Parsero?
