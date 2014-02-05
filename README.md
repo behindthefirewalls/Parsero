@@ -71,7 +71,7 @@ Example:
 
         http://www.bing.com/search?q=site:www.example.com/s/
          - https://www.example.com/s/tokfd9t86rbbstp/os2.pdf
-         - www.example.com/s
+         - https://www.example.com/s
          - https://www.example.com/s/ikq8r518nwrf443/vegemesta_placeholder.png
          - https://www.example.com/s/g2fg906npzk0in4/acca-f5-study-text-ebook...
          - https://www.example.com/s/pk4s3mxsgtrjl8q/acca-f2-study-text-ebook...
