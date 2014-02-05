@@ -1,3 +1,6 @@
+Here, you can get all the info about Parsero updated!!!
+
+http://www.behindthefirewalls.com/search/?q=parsero
 What's Parsero?
 ===============
 Parsero is a free script written in Python which read the Robots.txt file of a web server and look at the Disallow entries. The Disallow entries are the URL path of directories or files hosted on a web server which the administrators don't want they be indexed by the crawlers. For example, "Disallow: /portal/login" don't allow to www.example.com/portal/login be indexed by the search engines like Google, Bing, Yahoo... in order nobody locate it searching on them.
