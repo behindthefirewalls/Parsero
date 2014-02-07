@@ -3,7 +3,7 @@ Here, you can get all the info about Parsero updated:
 http://www.behindthefirewalls.com/search/?q=parsero
 What's Parsero?
 ===============
-Parsero is a free script written in Python which read the Robots.txt file of a web server and look at the Disallow entries. The Disallow entries are the URL path of directories or files hosted on a web server which the administrators don't want they be indexed by the crawlers. For example, "Disallow: /portal/login" don't allow to www.example.com/portal/login be indexed by the search engines like Google, Bing, Yahoo... in order nobody locate it searching on them.
+Parsero is a free script written in Python which reads the Robots.txt file of a web server and looks at the Disallow entries. The Disallow entries are the URL path of directories or files hosted on a web server which the administrators don't want to be indexed by the crawlers. For example, "Disallow: /portal/login" don't allow to www.example.com/portal/login be indexed by the search engines like Google, Bing, Yahoo... so nobody can locate it when searching on them.
 
 Sometimes these paths typed in the Disallows entries  are directly accessible by the users (without using a search engine) just visiting the URL and the Path and sometimes they are not available to be visited by anybody... Because it is really common that the administrators write a lot of Disallows and some of them are available and some of them are not, you can use Parsero in order to check the HTTP status code of each Disallow entry in order to check automatically if these directories are available or not.
 
@@ -16,7 +16,7 @@ When you execute Parsero, you can see the HTTP status codes. For example, the co
     302 Found       The requested resource resides temporarily under a different URI.
     ...
 
-Also, that the administrator write a robots.txt, it doesn't mean that the files or direcotories typed in this file will not be indexed by Bing, Google, Yahoo... For this reason, Parsero is capable to perform search in Bing to locate content indexed whithout the web administrator authorization.
+Also, that the administrator write a robots.txt, it doesn't mean that the files or direcotories typed in this file will not be indexed by Bing, Google, Yahoo... For this reason, Parsero is capable of searching in Bing to locate content indexed whithout the web administrator authorization.
 
 Installing:
 ==========
