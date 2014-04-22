@@ -62,30 +62,6 @@ except ImportError:
 	print("\n" + bcolors.FAIL + 'You need to install urllib3. "sudo pip-3.3 install urllib3"' + bcolors.ENDC + "\n")
 	exit(1)
 
-def check_file():
-
-	from os import path
-	PATH = "./robots.txt"
-	PATH2 = "./path.txt"
-	
-	if os.path.isfile(PATH):
-		os.remove(PATH)
-	
-	if os.path.isfile(PATH2):
-		os.remove(PATH2)
-
-def download(url):
-	try:
-		g = urllib.request.urlopen("http://"+url+"/robots.txt")
-	except urllib.error.HTTPError:
-		print("\n" + bcolors.FAIL + "No robots.txt file has been found." + bcolors.ENDC + "\n")
-		exit(1)
-	except urllib.error.URLError:
-		print("\n" + bcolors.FAIL + "Please, type a valid URL. This URL can't be resolved." + bcolors.ENDC + "\n")
-		exit(1)
-	with open('robots.txt', 'b+w') as f:
-        	            f.write(g.read())
-
 def logo():
 
 	hello="""
@@ -100,40 +76,41 @@ def logo():
 
 	now = time.strftime("%c")
 
-def parseo(url):
-	
-	robots = open("robots.txt")
-	robots_length = len(open('robots.txt','r').read().split('\n'))
-	for i in range(1,robots_length):
-		read = robots.readline()
-		path = read.split(':')
-		if "Disallow" == path[0]:
-			disallow = path[1]
-			links = open("path.txt",'a')
-			links.write(path[1])
-	robots.close()
-	if os.path.isfile("./path.txt") == False:
-		print("\n" + bcolors.FAIL + "Parsero doesn't find any Disallow, Robots.txt is not valid or is empty." + bcolors.ENDC + "\n")
-		os.remove("robots.txt")
-		exit(1)
-
-	links.close()
-
 def conn_check(url, only200):
-	links = open("path.txt")
+
+	global pathlist
+	pathlist = []
+	try:
+		for line in urllib.request.urlopen("http://"+url+"/robots.txt"):
+			lineStr = str( line, encoding='utf8' )
+			path = lineStr.split(': /')
+			if "Disallow" == path[0]:
+				pathlist.append(path[1].replace("\n","").replace("\r",""))
+				pathlist = list(set(pathlist))
+			try:
+				inx = pathlist.index("/")
+				del pathlist[inx]
+			except:
+				pass
+	except urllib.error.HTTPError:
+		print("\n" + bcolors.FAIL + "No robots.txt file has been found." + bcolors.ENDC + "\n")
+		exit(1)
+	except urllib.error.URLError:
+		print("\n" + bcolors.FAIL + "Please, type a valid URL. This URL can't be resolved." + bcolors.ENDC + "\n")
+		exit(1)	
+
 	http = urllib3.PoolManager()
 	count = 0
-	count_ok = 0
-	for line in links.readlines():
-		read = line.split("\n")
-		path = read[0].lstrip()
-		disurl = "http://"+url+"/"+path
+	count_ok = 0			
+	
+	for p in pathlist:		
+		disurl = "http://"+url+'/'+p
 		r1 = http.request('GET', disurl, redirect = False, retries = 5)
 		if r1.status == 200:
-			print (bcolors.OKGREEN + url+path + ' ' + str(r1.status) + ' ' + str(r1.reason) + bcolors.ENDC)
+			print (bcolors.OKGREEN + disurl + ' ' + str(r1.status) + ' ' + str(r1.reason) + bcolors.ENDC)
 			count_ok = count_ok+1
 		elif only200 == False:
-			print (bcolors.FAIL + url+path + ' ' + str(r1.status) + ' ' + str(r1.reason) + bcolors.ENDC)
+ 			print (bcolors.FAIL + disurl + ' ' + str(r1.status) + ' ' + str(r1.reason) + bcolors.ENDC)
 		count = count+1
 
 	count_int = int(count)
@@ -147,52 +124,44 @@ def conn_check(url, only200):
 	else:
 		print('\n' + bcolors.FAIL + '[+] %i links have been analyzed but any them are available...'%count_int + bcolors.ENDC)
 
-	links.close()
-
-def search_bing(url, searchbing):
+def search_bing(url, searchbing, only200):
 	
 	try:
 		print("\nSearching the Disallows entries in Bing...\n")
-		sys.path.append("./bs4")
+
 		from bs4 import BeautifulSoup
 		
-	
-		links = open("path.txt")
 		count = 0
-		for line in links.readlines():
-			read = line.split("\n")
-			path = read[0].lstrip()
-		
+		for p in pathlist:
+			disurl = "http://"+url+'/'+p		
 			opener = urllib.request.build_opener()
 			opener.addheaders = [('User-agent', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:26.0) Gecko/20100101 Firefox/26.0')]
 		
-			url2 = "http://www.bing.com/search?q=site:"+url+path
+			url2 = "http://www.bing.com/search?q=site:"+disurl
 			print (url2)
 			
 			page = opener.open(url2)
 			soup = BeautifulSoup(page)
 	
-			
+			http = urllib3.PoolManager()
 			for cite in soup.findAll('cite'):
 				if url in cite.text:
 					count = count +1
-					print (bcolors.OKGREEN + " - " + cite.text + bcolors.ENDC)
-	
+					r2 = http.request('GET',  cite.text, redirect = False, retries = 5)
+					if r2.status == 200:
+						print (bcolors.OKGREEN + ' - ' + cite.text + ' ' + str(r2.status) + ' ' + str(r2.reason) + bcolors.ENDC)
+					elif only200 == False:
+ 						print (bcolors.FAIL + ' - ' + cite.text + ' ' + str(r2.status) + ' ' + str(r2.reason) + bcolors.ENDC)
+
 		if count == 0:
 			print('\n' + bcolors.FAIL + '[+] No Dissallows have been indexed in Bing' + bcolors.ENDC)
-	
-		links.close()
 
 	except ImportError:
 		print(bcolors.FAIL + 'You need to install Beautifulsoup. "sudo pip-3.3 install beautifulsoup4"' + bcolors.ENDC)
 
 def date(url):
-	print("Starting Parsero v0.6 (https://github.com/behindthefirewalls/Parsero) at " + time.strftime("%x") + " " + time.strftime("%X"))
+	print("Starting Parsero v0.7 (https://github.com/behindthefirewalls/Parsero) at " + time.strftime("%x") + " " + time.strftime("%X"))
 	print("Parsero scan report for " + url)
-
-def remove_files():
-	os.remove("path.txt")
-	os.remove("robots.txt")
 
 def main():
 	parse = argparse.ArgumentParser()
@@ -211,15 +180,10 @@ def main():
 	url = str(args.url)
 	only200 = args.only200
 	searchbing = args.searchbing
-
-	check_file()
-	download(url)
-	parseo(url)
 	date(url)
 	conn_check(url, only200)
 	if searchbing == True:
-		search_bing(url, searchbing)
-	remove_files()
+		search_bing(url, searchbing, only200)
 
 if __name__=="__main__":
 	start_time = time.time()
