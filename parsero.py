@@ -145,13 +145,16 @@ def search_bing(url, searchbing, only200):
 	
 			http = urllib3.PoolManager()
 			for cite in soup.findAll('cite'):
-				if url in cite.text:
-					count = count +1
-					r2 = http.request('GET',  cite.text, redirect = False, retries = 5)
-					if r2.status == 200:
-						print (bcolors.OKGREEN + ' - ' + cite.text + ' ' + str(r2.status) + ' ' + str(r2.reason) + bcolors.ENDC)
-					elif only200 == False:
- 						print (bcolors.FAIL + ' - ' + cite.text + ' ' + str(r2.status) + ' ' + str(r2.reason) + bcolors.ENDC)
+				try:
+					if url in cite.text:
+						count = count +1
+						r2 = http.request('GET',  cite.text, redirect = False, retries = 5)
+						if r2.status == 200:
+							print (bcolors.OKGREEN + ' - ' + cite.text + ' ' + str(r2.status) + ' ' + str(r2.reason) + bcolors.ENDC)
+						elif only200 == False:
+ 							print (bcolors.FAIL + ' - ' + cite.text + ' ' + str(r2.status) + ' ' + str(r2.reason) + bcolors.ENDC)
+				except UnicodeEncodeError:
+					pass
 
 		if count == 0:
 			print('\n' + bcolors.FAIL + '[+] No Dissallows have been indexed in Bing' + bcolors.ENDC)
