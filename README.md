@@ -56,44 +56,35 @@ Example:
         |  __/ (_| | |  \__ \  __/ | | (_) |
         |_|   \__,_|_|  |___/\___|_|  \___/ 
 
-        Starting Parsero v0.6 (https://github.com/behindthefirewalls/Parsero) at 02/05/14 12:35:00
-        Parsero scan report for www.example.com
-        www.example.com 301 MOVED PERMANENTLY
-        www.example.com/s/ 301 MOVED PERMANENTLY
-        www.example.com/sh/ 301 MOVED PERMANENTLY
-        www.example.com/static/ 403 Forbidden
-        www.example.com/gallery/ 301 MOVED PERMANENTLY
-        www.example.com/connect 500 Internal Server Error
-        www.example.com/invite 500 Internal Server Error
-        www.example.com/invite_register 500 Internal Server Error
-        www.example.com/m/invite 301 MOVED PERMANENTLY
-
-        [+] 9 links have been analyzed but any them are available...
-
-        Searching the Disallows entries in Bing...
-
-        http://www.bing.com/search?q=site:www.example.com/s/
-         - https://www.example.com/s/tokfd9t86rbbstp/os2.pdf
-         - https://www.example.com/s
-         - https://www.example.com/s/ikq8r518nwrf443/vegemesta_placeholder.png
-         - https://www.example.com/s/g2fg906npzk0in4/acca-f5-study-text-ebook...
-         - https://www.example.com/s/pk4s3mxsgtrjl8q/acca-f2-study-text-ebook...
-         - https://www.example.com/s/wklmsfph99ylycp/acca-p3-study-text-ebook...
-         - https://www.example.com/s/5vqgh090jnh5h6i/acca-p1-study-text-ebook...
-         - https://www.example.com/s/c4fw5qwt8dgx4j8/os2_01.pdf
-         - https://www.example.com/s/ikq8r518nwrf443/vegemesta_placeholder...
-        http://www.bing.com/search?q=site:www.example.com/sh/
-         - https://www.example.com/sh/7rirtejc4vgjyqb/LtF_Brb_c0
-         - https://www.example.com/sh/e2qwi6va030grv9/AdEqTi5KE5?n=51225956
-         - https://www.example.com/sh/arg9xnf0spr36i5/hPe0llAPw4
-        http://www.bing.com/search?q=site:www.example.com/connect
-        http://www.bing.com/search?q=site:www.example.com/invite
-        http://www.bing.com/search?q=site:www.example.com/invite_register
-        http://www.bing.com/search?q=site:www.example.com/m/invite
-
-        Finished in 9.444016933441162 seconds
-
-
+	Starting Parsero v0.75 (https://github.com/behindthefirewalls/Parsero) at 05/22/14 11:12:55                                             	Parsero scan report for example.com                                             
+	http://example.com/download.php 302 Moved Temporarily                                             
+	http://example.com/raw.php 302 Moved Temporarily                                             
+	http://example.com/embed_js.php 200 OK                                             
+	http://example.com/embed.php 200 OK                                             
+	http://example.com/print.php 302 Moved Temporarily                                             
+	http://example.com/diff.php 302 Moved Temporarily                                             
+	http://example.com/share.php 404 Not Found                                             
+	http://example.com/report.php 302 Moved Temporarily                                             
+	http://example.com/embed_iframe.php 200 OK                                             
+                                             
+	[+] 9 links have been analyzed and 3 of them are available!!!                                             
+                                             
+	Searching the Disallows entries in Bing...                                             
+                                             
+	http://www.bing.com/search?q=site:http://example.com/download.php                                             
+	http://www.bing.com/search?q=site:http://example.com/raw.php                                             
+ 	- example.com/raw.php/contact?i=KR9c2erd 200 OK                                             
+ 	- example.com/raw.php/legal.aspx 302 Moved Temporarily                                             
+ 	- example.com/raw.php/points?i=KR9c2erd 200 OK                                             
+ 	- example.com/raw.php/image/sqrn11sp3C/zayn-tshirt-one-direction?i=... 302 Moved Temporarily                                             	http://www.bing.com/search?q=site:http://example.com/embed_js.php                                             
+	http://www.bing.com/search?q=site:http://example.com/embed.php                                             
+	http://www.bing.com/search?q=site:http://example.com/print.php                                             
+	http://www.bing.com/search?q=site:http://example.com/diff.php                                             
+	http://www.bing.com/search?q=site:http://example.com/share.php                                             
+	http://www.bing.com/search?q=site:http://example.com/report.php                                             
+	http://www.bing.com/search?q=site:http://example.com/embed_iframe.php                                             
+                                             
+	Finished in 7.290362596511841 seconds 
 
 Disclaimer
 ==========
