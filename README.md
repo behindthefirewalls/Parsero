@@ -77,7 +77,8 @@ Example:
  	- example.com/raw.php/contact?i=KR9c2erd 200 OK                                             
  	- example.com/raw.php/legal.aspx 302 Moved Temporarily                                             
  	- example.com/raw.php/points?i=KR9c2erd 200 OK                                             
-	- example.com/raw.php/image/sqrn11sp3C/zayn-tshirt-one-direction?i=... 302 Moved Temporarily                                             	http://www.bing.com/search?q=site:http://example.com/embed_js.php                                             
+	- example.com/raw.php/image/sqrn11sp3C/zayn-tshirt-one-direction?i=... 302 Moved Temporarily
+	http://www.bing.com/search?q=site:http://example.com/embed_js.php
 	http://www.bing.com/search?q=site:http://example.com/embed.php                                             
 	http://www.bing.com/search?q=site:http://example.com/print.php                                             
 	http://www.bing.com/search?q=site:http://example.com/diff.php                                             
