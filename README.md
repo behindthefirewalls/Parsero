@@ -7,6 +7,9 @@ Parsero is a free script written in Python which reads the Robots.txt file of a 
 
 But sometimes these paths typed in the Disallows entries are directly accessible by the users without using a search engine, just visiting the URL and the Path, and sometimes they are not available to be visited by anybody... Because it is really common that the administrators write a lot of Disallows and some of them are available and some of them are not, you can use Parsero in order to check the HTTP status code of each Disallow entry in order to check automatically if these directories are available or not.
 
+Also, the fact the administrator write a robots.txt, it doesn't mean that the files or direcotories typed in the Dissallow entries will not be indexed by Bing, Google, Yahoo... For this reason, Parsero is capable of searching in Bing to locate content indexed whithout the web administrator authorization. Parsero will check the HTTP status code in the same way for each Bing result.
+
+
 When you execute Parsero, you can see the HTTP status codes. For example, the codes bellow:
 
 
@@ -16,7 +19,6 @@ When you execute Parsero, you can see the HTTP status codes. For example, the co
     302 Found       The requested resource resides temporarily under a different URI.
     ...
 
-Also, the fact the administrator write a robots.txt, it doesn't mean that the files or direcotories typed in the Dissallow entries will not be indexed by Bing, Google, Yahoo... For this reason, Parsero is capable of searching in Bing to locate content indexed whithout the web administrator authorization and check the HTTP status code in the same way.
 
 Installing:
 ==========
