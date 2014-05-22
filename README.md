@@ -29,11 +29,12 @@ This tool needs at least Python3 and urllib3.
     sudo pip-3.3 install urllib3
     sudo pip-3.2 install beautifulsoup4
         
-Make sure that your default version of Python is 3 or later. If you don't want to change your default version, you can execute typing $ python3.3 parsero (if this version has been installed) instead of $ python parsero.
+Make sure that your default version of Python is 3 or later. If you don't want to change your default version, you can execute typing
+$ python3 parsero (if this version has been installed) instead of $ python parsero.
 
 Usage:
 ======
-    $ python3.3 parsero.py -h
+    $ python3 parsero.py -h
         
     usage: parsero.py [-h] [-u URL] [-o] [-sb]
 	
@@ -47,7 +48,7 @@ Usage:
 Example:
 =======
 	 
-    root@kali:~/my-tools/Parsero# python3.2 parsero.py -u www.example.com -sb
+    root@kali:~/my-tools/Parsero# python3 parsero.py -u www.example.com -sb
 
          ____                               
         |  _ \ __ _ _ __ ___  ___ _ __ ___  
@@ -96,7 +97,7 @@ Example:
 
 Disclaimer
 ==========
-The use of this tools is your responsability. Use parsero to audit your own servers or servers which they have been given permission to scan. I hereby disclaim any responsibility for actions taken with this tool.
+The use of this tools is your responsability. Use parsero to audit your own servers or servers you are allowed to scan. I hereby disclaim any responsibility for actions taken with this tool.
 
 
 Author:
