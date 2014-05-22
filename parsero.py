@@ -96,8 +96,8 @@ def conn_check(url, only200):
 		print("\n" + bcolors.FAIL + "No robots.txt file has been found." + bcolors.ENDC + "\n")
 		exit(1)
 	except urllib.error.URLError:
-		print("\n" + bcolors.FAIL + "Please, type a valid URL. This URL can't be resolved." + bcolors.ENDC + "\n")
-		print("\n" + bcolors.FAIL + "E.g: python3 parsero.py -u www.behindthefirewalls.com -o -sb" + bcolors.ENDC + "\n")
+		print("\n" + bcolors.FAIL + "Please, type a valid URL. This URL can't be resolved." + bcolors.ENDC)
+		print("\n" + bcolors.FAIL + "e.g: python3 parsero.py -u www.behindthefirewalls.com -o -sb" + bcolors.ENDC + "\n")
 		exit(1)	
 
 	http = urllib3.PoolManager()
