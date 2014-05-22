@@ -56,7 +56,8 @@ Example:
         |  __/ (_| | |  \__ \  __/ | | (_) |
         |_|   \__,_|_|  |___/\___|_|  \___/ 
 
-	Starting Parsero v0.75 (https://github.com/behindthefirewalls/Parsero) at 05/22/14 11:12:55                                          		Parsero scan report for example.com                                             
+	Starting Parsero v0.75 (https://github.com/behindthefirewalls/Parsero) at 05/22/14 11:12:55
+	Parsero scan report for example.com                                             
 	http://example.com/download.php 302 Moved Temporarily                                             
 	http://example.com/raw.php 302 Moved Temporarily                                             
 	http://example.com/embed_js.php 200 OK                                             
