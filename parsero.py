@@ -97,6 +97,7 @@ def conn_check(url, only200):
 		exit(1)
 	except urllib.error.URLError:
 		print("\n" + bcolors.FAIL + "Please, type a valid URL. This URL can't be resolved." + bcolors.ENDC + "\n")
+		print("\n" + bcolors.FAIL + "E.g: python3 parsero.py -u www.behindthefirewalls.com -o -sb" + bcolors.ENDC + "\n")
 		exit(1)	
 
 	http = urllib3.PoolManager()
@@ -163,7 +164,7 @@ def search_bing(url, searchbing, only200):
 		print(bcolors.FAIL + 'You need to install Beautifulsoup. "sudo pip-3.3 install beautifulsoup4"' + bcolors.ENDC)
 
 def date(url):
-	print("Starting Parsero v0.7 (https://github.com/behindthefirewalls/Parsero) at " + time.strftime("%x") + " " + time.strftime("%X"))
+	print("Starting Parsero v0.75 (https://github.com/behindthefirewalls/Parsero) at " + time.strftime("%x") + " " + time.strftime("%X"))
 	print("Parsero scan report for " + url)
 
 def main():
