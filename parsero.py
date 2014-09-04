@@ -80,6 +80,7 @@ def conn_check(url, only200):
 
 	global pathlist
 	pathlist = []
+	salida = 1
 	try:
 		for line in urllib.request.urlopen("http://"+url+"/robots.txt"):
 			lineStr = str( line, encoding='utf8' )
@@ -93,12 +94,12 @@ def conn_check(url, only200):
 			except:
 				pass
 	except urllib.error.HTTPError:
-		print("\n" + bcolors.FAIL + "No robots.txt file has been found." + bcolors.ENDC + "\n")
-		exit(1)
+		print("\n" + bcolors.FAIL + "No robots.txt file has been found." + bcolors.ENDC)
+		salida = 0
 	except urllib.error.URLError:
 		print("\n" + bcolors.FAIL + "Please, type a valid URL. This URL can't be resolved." + bcolors.ENDC)
 		print("\n" + bcolors.FAIL + "e.g: python3 parsero.py -u www.behindthefirewalls.com -o -sb" + bcolors.ENDC + "\n")
-		exit(1)	
+		salida = 0
 
 	http = urllib3.PoolManager()
 	count = 0
@@ -116,14 +117,16 @@ def conn_check(url, only200):
 
 	count_int = int(count)
 	count_ok_int = int(count_ok)
-	if count_ok_int != 0 and only200 == True :
-		print('\n[+] %i links have been analyzed and %i of them are available!!!'%(count_int,count_ok_int))
-	elif count_ok_int != 0 :
-		print('\n[+] %i links have been analyzed and %i of them are available!!!'%(count_int,count_ok_int))
-	elif count_ok_int == 0 and only200 == True :
-		print('\n' + bcolors.FAIL + '[+] %i links have been analyzed but any them are available...'%count_int + bcolors.ENDC)
-	else:
-		print('\n' + bcolors.FAIL + '[+] %i links have been analyzed but any them are available...'%count_int + bcolors.ENDC)
+
+	if salida == 1:
+		if count_ok_int != 0 and only200 == True :
+			print('\n[+] %i links have been analyzed and %i of them are available!!!'%(count_int,count_ok_int))
+		elif count_ok_int != 0 :
+			print('\n[+] %i links have been analyzed and %i of them are available!!!'%(count_int,count_ok_int))
+		elif count_ok_int == 0 and only200 == True :
+			print('\n' + bcolors.FAIL + '[+] %i links have been analyzed but any them are available...'%count_int + bcolors.ENDC)
+		else:
+			print('\n' + bcolors.FAIL + '[+] %i links have been analyzed but any them are available...'%count_int + bcolors.ENDC)
 
 def search_bing(url, searchbing, only200):
 	
@@ -158,13 +161,13 @@ def search_bing(url, searchbing, only200):
 					pass
 
 		if count == 0:
-			print('\n' + bcolors.FAIL + '[+] No Dissallows have been indexed in Bing' + bcolors.ENDC)
+			print("\n" + bcolors.FAIL + '[+] No Dissallows have been indexed in Bing' + bcolors.ENDC)
 
 	except ImportError:
 		print(bcolors.FAIL + 'You need to install Beautifulsoup. "sudo pip-3.3 install beautifulsoup4"' + bcolors.ENDC)
 
 def date(url):
-	print("Starting Parsero v0.75 (https://github.com/behindthefirewalls/Parsero) at " + time.strftime("%x") + " " + time.strftime("%X"))
+	print("Starting Parsero v0.80 (https://github.com/behindthefirewalls/Parsero) at " + time.strftime("%x") + " " + time.strftime("%X"))
 	print("Parsero scan report for " + url)
 
 def main():
@@ -172,24 +175,47 @@ def main():
 	parse.add_argument('-u', action='store', dest='url', help='Type the URL which will be analyzed')
 	parse.add_argument('-o', action='store_true', dest='only200', help='Show only the "HTTP 200" status code')
 	parse.add_argument('-sb', action='store_true', dest='searchbing', help='Search in Bing indexed Disallows')
+	parse.add_argument('-f', action='store', dest='file', help='Scan a list of domains from a list')
 
-	logo()
 
 	args = parse.parse_args()
-	if args.url == None:
+
+	if args.file == None and args.url == None:
+		logo()
 		parse.print_help()
 		print("\n")
 		exit(1)
 
-	url = str(args.url)
-	only200 = args.only200
-	searchbing = args.searchbing
-	date(url)
-	conn_check(url, only200)
-	if searchbing == True:
-		search_bing(url, searchbing, only200)
+	
+	urls = []
+	if args.file != None:
+		try:
+			hostFile = open (args.file,'r')
+		except IOError:
+			logo()
+			print(bcolors.FAIL + "[-] The file '"'%s'"' doesn't exist." % (args.file) + "\n" + bcolors.ENDC)
+			exit(1)
+
+		for line in hostFile.readlines():
+			line = line.split("\n")
+			urls.append(str(line[0]))
+
+	
+	if args.url != None:
+		urls.append(str(args.url))
+
+	urls = filter(None,urls)
+	urls = list(set(urls))
+	logo()
+	for url in urls:
+		start_time = time.time()
+		only200 = args.only200
+		searchbing = args.searchbing
+		date(url)
+		conn_check(url, only200)
+		if searchbing == True:
+			search_bing(url, searchbing, only200)
+		print("\nFinished in", time.time() - start_time, "seconds\n\n")
 
 if __name__=="__main__":
-	start_time = time.time()
 	main()
-	print("\nFinished in", time.time() - start_time, "seconds\n")
