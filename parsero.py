@@ -186,7 +186,9 @@ def main():
 		print("\n")
 		exit(1)
 
-	
+	if args.url.find("http://") == -1:
+                args.url = "http://"+args.url
+                
 	urls = []
 	if args.file != None:
 		try:
