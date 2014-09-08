@@ -186,9 +186,6 @@ def main():
 		print("\n")
 		exit(1)
 
-	if args.url.find("http://") == -1:
-                args.url = "http://"+args.url
-                
 	urls = []
 	if args.file != None:
 		try:
@@ -210,6 +207,8 @@ def main():
 	urls = list(set(urls))
 	logo()
 	for url in urls:
+		if url.find("http://") == 0:
+                        url = url.replace("http://","")
 		start_time = time.time()
 		only200 = args.only200
 		searchbing = args.searchbing
