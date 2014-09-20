@@ -210,7 +210,7 @@ def main():
         conn_check(url, only200)
         if searchbing == True:
             search_bing(url, searchbing, only200)
-        print("\nFinished in", time.time() - start_time, "seconds.\n")
+        print("\nFinished in %0.2f seconds.\n" % (time.time() - start_time))
 
 if __name__ == "__main__":
     main()
