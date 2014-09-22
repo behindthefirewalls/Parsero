@@ -47,11 +47,11 @@ This tool needs at least Python 3 and urllib3.
     sudo pip-3.2 install beautifulsoup4
         
 Make sure that your default version of Python is 3 or later. If you don't
-want to change your default version, you can execute typing
+want to change your default version, you can execute it by typing
 
     $ python3 parsero
 
-If this version has been installed instead of
+If python 3 version has set by default, just use the command below:
 
     $ python parsero
 
