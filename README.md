@@ -51,7 +51,7 @@ want to change your default version, you can execute it by typing
 
     $ python3 parsero
 
-If python 3 version has set by default, just use the command below:
+If python 3 version has benn set by default, just use the command below:
 
     $ python parsero
 
