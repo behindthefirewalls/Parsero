@@ -39,7 +39,7 @@ http://www.behindthefirewalls.com/search/?q=parsero
 
 Installing
 ==========
-There are three ways to install Parsero:
+There are three ways to install Parsero easily. 
 
 By using setup.py script
 
