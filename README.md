@@ -39,26 +39,27 @@ http://www.behindthefirewalls.com/search/?q=parsero
 
 Installing
 ==========
-This tool needs at least Python 3 and urllib3.
-       
-    sudo apt-get install python3
-    sudo apt-get install python3-pip
-    sudo pip-3.3 install urllib3
-    sudo pip-3.2 install beautifulsoup4
-        
-Make sure that your default version of Python is 3 or later. If you don't
-want to change your default version, you can execute it by typing
+There are three ways to install Parsero:
 
-    $ python3 parsero
+By using setup.py script
 
-If python 3 version has benn set by default, just use the command below:
+	sudo setup.py install
+	
+By using pip3
 
-    $ python parsero
+	sudo apt-get install python3-pip
+	sudo pip3 install parsero
+	
+In Kali Linux
+
+	sudo apt-get update
+	sudo apt-get install parsero
+
 
 Usage
 =====
 
-    $ python3 parsero.py -h
+    $ parsero -h
         
     usage: parsero.py [-h] [-u URL] [-o] [-sb]
 	
@@ -67,11 +68,12 @@ Usage
     -u URL      Type the URL which will be analyzed
     -o          Show only the "HTTP 200" status code
     -sb         Search in Bing indexed Disallows
+    -f FILE     Scan a list of domains from a list
 
 Example
 =======
 	 
-    root@kali:~/my-tools/Parsero# python3 parsero.py -u www.example.com -sb
+    root@kali:~# parsero -u www.example.com -sb
 
          ____                               
         |  _ \ __ _ _ __ ___  ___ _ __ ___  
