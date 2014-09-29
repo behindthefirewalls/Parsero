@@ -163,7 +163,7 @@ def search_bing(url, searchbing, only200):
         print(bcolors.FAIL + 'You need to install Beautifulsoup. "sudo pip-3.3 install beautifulsoup4"' + bcolors.ENDC)
 
 def date(url):
-    print("Starting Parsero v0.80 (https://github.com/behindthefirewalls/Parsero) at " + time.strftime("%x") + " " + time.strftime("%X"))
+    print("Starting Parsero v0.81 (https://github.com/behindthefirewalls/Parsero) at " + time.strftime("%x") + " " + time.strftime("%X"))
     print("Parsero scan report for " + url)
 
 def main():
