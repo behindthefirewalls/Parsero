@@ -12,7 +12,7 @@ def read(fname):
 if __name__ == '__main__':
     setup(
         name = 'parsero',
-        version="0.80",
+        version="0.81",
         description = 'A Python based Robots.txt audit tool',
         long_description = read('README.md'),
         author = 'Javier Nieto',
